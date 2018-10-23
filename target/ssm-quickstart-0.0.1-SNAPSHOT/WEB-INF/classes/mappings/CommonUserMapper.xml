@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ioverdosed.dao.CommonUserMapper" >
+  <resultMap type="com.ioverdosed.pojo.CommonUser" id="commonUserResult">
+	<id property="userId" column="user_id"/>
+	<result property="userNickname" column="user_nickname"/>
+	<result property="userAvatar" column="user_avatar"/>
+	<result property="userPhone" column="user_phone"/>
+	<result property="userAccount" column="user_account"/>
+	<result property="userPassword" column="user_password"/>
+  </resultMap>
+
+	<!-- 
+  <select id="selectById" parameterType="java.lang.Integer" resultType="com.ioverdosed.pojo.CommonUser">
+  select id,user_avatar,user_nickname,user_phone,user_account,user_password from ssm_common_user where id = 1;
+  </select>
+  -->
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="commonUserResult">
+  select user_id,user_avatar,user_nickname,user_phone,user_account,user_password 
+  from ssm_common_user 
+  where user_id = #{userId};
+  </select>
+  
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+
+  </delete>
+  
+  <insert id="insert" parameterType="com.ioverdosed.pojo.CommonUser" >
+  
+  </insert>
+    
+  <update id="updateById" parameterType="java.lang.Integer" >
+   update ssm_common_user set user_nickname = "aki" where id = 1;
+  </update>
+  
+  <select id="selectAll" resultMap="commonUserResult">
+		select * from ssm_common_user;
+  </select>
+  
+</mapper>
